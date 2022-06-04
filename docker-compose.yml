@@ -7,9 +7,9 @@ networks:
 services:
   nginx:
     image: nginx:stable-alpine
-    container_name: "${APP_NAME}_nginx"
+    container_name: "commissionCalculator_nginx"
     ports:
-      - "81:80"
+      - "89:80"
     volumes:
       - ./:/var/www/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
@@ -21,7 +21,7 @@ services:
     build:
       context: .
       dockerfile: DockerFile_php
-    container_name: "${APP_NAME}_php"
+    container_name: "commissionCalculator_php"
     volumes:
       - ./:/var/www/html
     ports:
@@ -41,7 +41,7 @@ services:
     build:
       context: .
       dockerfile: DockerFile_worker
-    container_name: "${APP_NAME}_worker"
+    container_name: "commissionCalculator_worker"
     volumes:
       - ./:/var/www/html
     ports:
