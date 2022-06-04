@@ -1,64 +1,78 @@
+<h1>How To Run Application</h1>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Run with Docker:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- clone the project from git
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- install docker in your system
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- make a copy of ".env.example" file in the root directory and name it ".env"
 
-## Learning Laravel
+- in root directory of project run following command
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+docker-compose up --build
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- wait all for all the installation and running nginx & php & composer
 
-## Laravel Sponsors
+- now you can run run project with following url and port
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+localhost:89
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Running Test Using Docker
 
-## Contributing
+- after running docker using "Run with Docker" instruction
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- in the other terminal run "docker exec commissionCalculator_php php artisan test"
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Run Manually:
 
-## Security Vulnerabilities
+its highly recommended to run the project using "Run With Docker" instruction and this explanation is only for complaining README file
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- install php version 7.4
+
+- install composer version 2
+
+- make a copy of ".env.example" file in the root directory and name it ".env"
+
+- in the root directory of project run "composer install"
+
+- in the root directory of project run "php artisan key:generate"
+
+- in the root directory of project run "php artisan storage:link"
+
+- in the root directory of project run "php artisan serve"
+
+- open given route in the browser and user application
+
+## Run tests Manually:
+
+- to run the tests after installing composer using "composer install" in the project root directory
+
+- in the root directory of project run "php artisan test"
+
+-- please note that php and composer that are mentioned in "Run Manually" must exist on system also you must make a copy of ".env.example" in the root directory and name it ".env"
+
+## Description of Application
+
+- this application is created to calculate commission of withdraw and deposit for two type of users with its own logic
+all the variables that is used in the logic is placed in the ".env" file so change in values does not need any change in the code
+
+- also application use service and actions in its structure so change in code will not effect on the core
+
+- each situation of commission have its own function and change in one logic does not effect on others
+
+- for more information about project logic please check the test instruction on gist.
+
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This application is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Developer Contact Information
+- full name: Mohammadamin Gheibi
+- email: gheibi.amin@gmail.com
