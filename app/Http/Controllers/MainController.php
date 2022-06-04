@@ -33,17 +33,4 @@ class MainController extends Controller
         }
 
     }
-
-    public function test()
-    {
-
-        $numbers = [3, 8743.2342, 3.20, '3'];
-        $currencies = ['USD', 'JPY', 'EUR', 'EUR'];
-        $results = [3.35, 8744, 3.20];
-
-        foreach ($numbers as $key => $number){
-            $result = $this->convert_actions->roundUp($number, $currencies[$key]);
-            dump($result);
-        }
-    }
 }
