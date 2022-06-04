@@ -10,14 +10,17 @@ class ConvertActions
     private $operation_date_format;
     private $operation_date_column_name;
 
-    public function __construct(){
-        $this->columns = explode(',', env('CSV_COLUMNS', 'date,identification_id,user_type,operation_type,operation_amount,operation_currency'));
+    public function __construct()
+    {
+        $this->columns = explode(',',
+            env('CSV_COLUMNS', 'date,identification_id,user_type,operation_type,operation_amount,operation_currency'));
         $this->operation_date_format = env('OPERATION_DATE_FORMAT', 'Y-m-d');
         $this->operation_date_column_name = env('OPERATION_DATE_COLUMN_NAME', 'date');
     }
 
-    public function convertFileToArray($csv){
-        try{
+    public function convertFileToArray($csv)
+    {
+        try {
             $path = $csv->getRealPath();
             $records = file($path);
             $output = [];
@@ -36,7 +39,7 @@ class ConvertActions
             return $output;
 
 
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             throw new \Exception($exception->getMessage());
         }
 
@@ -44,32 +47,32 @@ class ConvertActions
 
     public function roundUp($number, $currency)
     {
-        if(gettype($number) == 'integer' || gettype($number) == 'double'){
-            if($currency == 'JPY'){
+        if (gettype($number) == 'integer' || gettype($number) == 'double') {
+            if ($currency == 'JPY') {
                 $result = ceil($number);
-            }else{
-                $pow = pow ( 10, 2 );
-                $result =  ( ceil ( $pow * $number ) + ceil ( $pow * $number - ceil ( $pow * $number ) ) ) / $pow;
+            } else {
+                $pow = pow(10, 2);
+                $result = (ceil($pow * $number) + ceil($pow * $number - ceil($pow * $number))) / $pow;
             }
 
             return $result;
-        }else{
+        } else {
             throw new \Exception('Number must be integer or double');
         }
     }
 
     public function dateConverter($value, $index)
     {
-        try{
-            $transaction_day = Carbon::createFromFormat($this->operation_date_format, $value[$this->operation_date_column_name]);
+        try {
+            $transaction_day = Carbon::createFromFormat($this->operation_date_format,
+                $value[$this->operation_date_column_name]);
             $value[$index] = $transaction_day;
             return $value;
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             throw new \Exception($exception->getMessage());
         }
 
     }
-
 
 
 }

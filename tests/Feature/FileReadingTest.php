@@ -13,7 +13,7 @@ class FileReadingTest extends TestCase
 
         $convert_actions = new ConvertActions();
 
-        $path  = public_path('test_files/test-file.csv');
+        $path = public_path('test_files/test-file.csv');
 
         $file = new UploadedFile($path, basename($path), mime_content_type($path), filesize($path), false);
 

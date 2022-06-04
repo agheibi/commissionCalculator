@@ -27,11 +27,11 @@ class RoutesTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $path  = public_path('test_files/test-file.csv');
+        $path = public_path('test_files/test-file.csv');
 
         $file = new UploadedFile($path, basename($path), mime_content_type($path), filesize($path), false);
 
-        $response = $this->postJson('/fileUpload',[
+        $response = $this->postJson('/fileUpload', [
             'csv' => $file,
         ]);
 

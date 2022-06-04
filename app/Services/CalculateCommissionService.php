@@ -53,8 +53,9 @@ class CalculateCommissionService
     }
 
 
-    public function start($csv){
-        try{
+    public function start($csv)
+    {
+        try {
             $data = $this->convert_actions->convertFileToArray($csv);
 
             $grouped_data = $this->grouping_actions->groupData($data);
@@ -71,9 +72,10 @@ class CalculateCommissionService
             //business deposit calculation
             $business_deposit_result = $this->commission_actions->calculateDepositBusiness($grouped_data[$this->business_type_in_file][$this->deposit_type_in_file]);
 
-            $merged_data = array_merge($private_withdraw_result, $private_deposit_result, $business_withdraw_result, $business_deposit_result);
+            $merged_data = array_merge($private_withdraw_result, $private_deposit_result, $business_withdraw_result,
+                $business_deposit_result);
             $final_data = [];
-            foreach ($merged_data as $single_data){
+            foreach ($merged_data as $single_data) {
                 $index = $single_data['index'];
 
                 $final_data[$index] = $single_data;
@@ -81,7 +83,7 @@ class CalculateCommissionService
 
             ksort($final_data);
 
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             throw new \Exception($exception->getMessage());
         }
 

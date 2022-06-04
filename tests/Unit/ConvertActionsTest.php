@@ -18,7 +18,7 @@ class ConvertActionsTest extends TestCase
         $currencies = ['USD', 'JPY', 'EUR'];
         $results = [3.35, 8744, 3.20];
 
-        foreach ($numbers as $key => $number){
+        foreach ($numbers as $key => $number) {
             $result = $convert_actions->roundUp($number, $currencies[$key]);
             $this->assertTrue($result == $results[$key]);
         }

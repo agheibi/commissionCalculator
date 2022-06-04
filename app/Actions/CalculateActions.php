@@ -24,7 +24,6 @@ class CalculateActions
     private $withdraw_business_commission_fee_percent;
 
 
-
     public function __construct()
     {
         $this->operation_type_column_name = env('OPERATION_TYPE_COLUMN_NAME', 'operation_type');
@@ -47,12 +46,13 @@ class CalculateActions
 
     public function calculateEndWeekFormatted($value)
     {
-        try{
-            $transaction_day = Carbon::createFromFormat($this->operation_date_format, $value[$this->operation_date_column_name]);
+        try {
+            $transaction_day = Carbon::createFromFormat($this->operation_date_format,
+                $value[$this->operation_date_column_name]);
             $end_week_date = $transaction_day->endOfWeek();
             $formatted_end_week_date = $end_week_date->format($this->operation_date_format);
             return $formatted_end_week_date;
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             throw new \Exception($exception->getMessage());
         }
 
@@ -60,10 +60,10 @@ class CalculateActions
 
     public function convertAmountToBase($value)
     {
-        try{
+        try {
             $rate = $this->fetch_actions->fetchRate($value[$this->currency_column_name]);
             return ($value[$this->amount_column_name] / $rate);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             throw new \Exception($exception->getMessage());
         }
 
@@ -71,10 +71,10 @@ class CalculateActions
 
     public function convertBaseToMainCurrency($amount, $currency)
     {
-        try{
+        try {
             $rate = $this->fetch_actions->fetchRate($currency);
             return ($amount * $rate);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             throw new \Exception($exception->getMessage());
         }
 
