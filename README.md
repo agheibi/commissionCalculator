@@ -9,15 +9,13 @@
 
 - install docker in your system
 
-- make a copy of ".env.example" file in the root directory and name it ".env"
-
-- in root directory of project run following command
+- in the root directory of project run following command in terminal
 
 docker-compose up --build
 
-- wait all for all the installation and running nginx & php & composer
+- wait until all of the installations finish
 
-- now you can run run project with following url and port
+- now you can open the project with following url and port on any browser
 
 localhost:89
 
@@ -31,9 +29,9 @@ localhost:89
 
 ## Run Manually:
 
-its highly recommended to run the project using "Run With Docker" instruction and this explanation is only for complaining README file
+its highly recommended to run the project using "Run With Docker" instruction and this explanation is only for completing README file
 
-- install php version 7.4
+- install php version 8.1
 
 - install composer version 2
 
@@ -41,26 +39,29 @@ its highly recommended to run the project using "Run With Docker" instruction an
 
 - in the root directory of project run "composer install"
 
-- in the root directory of project run "php artisan key:generate"
+- when composer installation finished continue the following instruction:
 
-- in the root directory of project run "php artisan storage:link"
+- in the root directory of project run "php artisan key:generate"
 
 - in the root directory of project run "php artisan serve"
 
-- open given route in the browser and user application
+- open given route in the browser and use the application
 
 ## Run tests Manually:
 
-- to run the tests after installing composer using "composer install" in the project root directory
+- to run the tests, after installing composer using "composer install" in the project root directory
+
+- make a copy of ".env.example" and name it ".env"
 
 - in the root directory of project run "php artisan test"
 
--- please note that php and composer that are mentioned in "Run Manually" must exist on system also you must make a copy of ".env.example" in the root directory and name it ".env"
+***** please note that php and composer that are mentioned in "Run Manually" must exist on system
 
 ## Description of Application
 
-- this application is created to calculate commission of withdraw and deposit for two type of users with its own logic
-all the variables that is used in the logic is placed in the ".env" file so change in values does not need any change in the code
+- this application is created to calculate commission of withdraw and deposit for two type of users that each user have its own logic
+
+- all the variables that is used in the logic is placed in the ".env" file so change in values does not need any change in the code
 
 - also application use service and actions in its structure so change in code will not effect on the core
 
