@@ -36,19 +36,4 @@ services:
     working_dir: /app
     networks:
       - commissionCalculator
-    command: "composer install"
-  worker:
-    build:
-      context: .
-      dockerfile: DockerFile_worker
-    container_name: "commissionCalculator_worker"
-    volumes:
-      - ./:/var/www/html
-    ports:
-      - "9001:9001"
-    depends_on:
-      - php
-      - nginx
-      - composer
-    networks:
-      - commissionCalculator
+    command: sh -c "composer install --ignore-platform-reqs && cp .env.example .env && php artisan key:generate"
