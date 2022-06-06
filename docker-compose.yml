@@ -30,7 +30,7 @@ services:
       - commissionCalculator
   composer:
     image: composer
-    container_name: ${APP_NAME}_composer
+    container_name: commissionCalculator_composer
     volumes:
       - ./:/app
     working_dir: /app
